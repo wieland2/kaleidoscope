@@ -1,0 +1,7 @@
+<p><%= " #{@user.first_name} #{@user.last_name}" %></p>
+<p><%= @user.username %></p>
+
+<% @user_channels.each do |channel| %>
+<p><%= link_to channel.title, user_channel_path(channel)%></p>
+<p><%= channel.description %></p>
+<% end %>
