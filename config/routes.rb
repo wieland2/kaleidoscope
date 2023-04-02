@@ -1,27 +1,24 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :users, only: [:show] do
-    resources :friendships, only: [:new, :create, :index, :destroy]
-    resources :channels  do
-    resources :bookmarks, only: [:new, :create]
-    end
-  end
 
-  resources :posts, only: [:index, :new, :create] do
-    resources :comments, only: [:index, :new, :create]
-  end
+      resources :users, only: [:show] do
+      resources :friendships, only: [:index, :new, :create, :destroy]
+      end
 
+      resources :channels, :shallow => true do
+      resources :bookmarks, only: [:new, :create, :destroy]
+      resources :likes, only: [:index, :new, :create]
+        resources :posts, :except => [:edit, :update] do
+        resources :likes, only: [:index, :new, :create]
+          resources :comments, only: [:index, :show, :new, :create, :destroy] do
+          resources :likes, only: [:index, :new, :create]
+            resources :replies, only: [:index, :new, :create, :destroy] do
+            resources :likes, only: [:index, :new, :create]
+            end
+          end
+       end
+     end
+     resources :likes, only: [:destroy]
 
-  resources :comments, only: [:show] do
-    resources :replies, only: [:index, :new, :create ]
-  end
-
-  resources :likes, only: [:index, :new, :create]
-
-  resources :posts, only: [:show, :destroy]
-  resources :likes, only: [:destroy]
-  resources :comments, only: [:destroy]
-  resources :replies, only: [:destroy]
-  resources :bookmarks, only: [:destroy]
 end
