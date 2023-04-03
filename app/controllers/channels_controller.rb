@@ -5,6 +5,8 @@ before_action :set_channel, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @post = Post.new
+    @posts = Post.where(channel_id: params[:id])
   end
 
   def new
