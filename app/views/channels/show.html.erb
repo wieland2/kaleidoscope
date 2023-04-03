@@ -1,24 +1,38 @@
-
-<h1>User Channel</h1>
-
-<p><%= @channel.title %></p>
-<p><%= @channel.description %></p>
-<p><%= link_to @channel.user.username, @channel.user %></p>
-
- <%= link_to "Delete", @channel ,
+ <%= link_to "Delete Channel", @channel ,
     data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
   %>
 
 <%= link_to "Edit Channel", edit_channel_path(@channel) %>
 
-<%= simple_form_for [@channel, @post] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit %>
-<% end %>
+
+<div class="channel-container">
+
+<h2><%= @channel.title %></h2>
+<p><%= @channel.description %></p>
+<p><%= link_to @channel.user.username, @channel.user %></p>
+
+</div>
 
 
-<% @posts.each do |post| %>
-<p><%=post.content %>  <%= link_to "Delete", post ,
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %> </p>
-<% end %>
+
+<div class="channel-posts">
+
+    <%= simple_form_for [@channel, @post] do |f| %>
+      <%= f.input :content %>
+      <%= f.submit %>
+    <% end %>
+
+  <div class="post-container">
+
+    <% @posts.each do |post| %>
+      <div class="post-card">
+        <p><%= post.user.username %></p>
+        <p><%= link_to post.content, post %></p>
+        <p><%= post.comments.count %> Comments</p>
+        <p><%= link_to "Delete Post", post ,data: {turbo_method: :delete} %></p>
+      </div>
+    <% end %>
+  </div>
+
+
+</div>

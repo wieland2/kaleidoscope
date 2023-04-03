@@ -3,6 +3,7 @@ class Like < ApplicationRecord
   belongs_to :comment
   belongs_to :channel
   belongs_to :post
+  belongs_to :reply
   validates :user_id, uniqueness: {scope: :post_id}
   validates :user_id, uniqueness: {scope: :channel_id}
   validates :user_id, uniqueness: {scope: :comment_id}

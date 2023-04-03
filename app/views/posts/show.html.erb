@@ -1,0 +1,18 @@
+<p><%= @post.user.username %></p>
+<p><%= @post.content %></p>
+
+
+
+<%= simple_form_for [@post, @comment] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
+
+
+
+
+<% @post.comments.each do |comment| %>
+<%= comment.content %>
+<%= comment.user.username  %>
+<%= link_to "Delete", comment ,data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end %>
