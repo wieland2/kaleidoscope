@@ -13,3 +13,5 @@ user_2 = User.create(email:"joao@gmail.com", password: "123456", first_name: "Jo
 user_3 = User.create(email:"patricia@gmail.com", password: "123456", first_name: "Patricia", last_name: "Wieland", username: "pat21")
 
 channel_1 = Channel.create(title: "Jupiter", description: "Everything Jupiter", user_id: 1 )
+
+post_1 = Post.create(content: "I love this anime so so much", user_id: 1, channel_id: 1)

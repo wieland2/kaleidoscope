@@ -10,3 +10,23 @@
 <% end %>
 
 <%= link_to "Create Channel", new_channel_path %>
+
+
+   <% @posts.each do |post| %>
+      <div class="post-card">
+        <p><%= post.user.username %></p>
+        <p><%= link_to post.content, post %></p>
+        <% if post.likes.count == 1 %>
+        <p><%= post.likes.count %> Like</p>
+        <% else %>
+        <p><%= post.likes.count %> Likes</p>
+        <% end %>
+        <% if post.comments.count == 1 %>
+        <p><%= post.comments.count %> Comment </p>
+        <% else %>
+        <p><%= post.comments.count %> Comments </p>
+        <% end %>
+        <p><%= link_to "Delete Post", post ,data: {turbo_method: :delete} %></p>
+      </div>
+    <% end %>
+  </div>
