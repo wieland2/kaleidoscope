@@ -7,6 +7,8 @@ before_action :set_posts, only: [:index, :new, :create]
 
   def show
     @post = Post.find(params[:id])
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
   def new
