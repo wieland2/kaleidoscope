@@ -1,0 +1,12 @@
+
+<h1>User Channel</h1>
+
+<p><%= @channel.title %></p>
+<p><%= @channel.description %></p>
+<p><%= link_to @channel.user.username, @channel.user %></p>
+
+ <%= link_to "Delete", @channel ,
+    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+  %>
+
+<%= link_to "Edit Channel", edit_channel_path(@channel) %>

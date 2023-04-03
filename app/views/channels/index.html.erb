@@ -1,0 +1,5 @@
+<% @channels.each do |channel| %>
+<%= link_to channel.title, channel_path(channel) %>
+<%= channel.description %>
+<%= channel.user.username %>
+<% end %>
