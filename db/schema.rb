@@ -53,10 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_181515) do
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "comment_id", null: false
-    t.bigint "channel_id", null: false
-    t.bigint "post_id", null: false
-    t.bigint "reply_id", null: false
+    t.bigint "comment_id"
+    t.bigint "channel_id"
+    t.bigint "post_id"
+    t.bigint "reply_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_likes_on_channel_id"

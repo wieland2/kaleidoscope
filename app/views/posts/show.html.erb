@@ -1,5 +1,19 @@
 <p><%= @post.user.username %></p>
 <p><%= @post.content %></p>
+<% if @post.likes.count == 1 %>
+<p><%= @post.likes.count %> Like</p>
+<% else %>
+<p><%= @post.likes.count %> Likes</p>
+<% end %>
+
+<% if @post.comments.count == 1 %>
+<p><%= @post.comments.count %> Comment </p>
+<% else %>
+<p><%= @post.comments.count %> Comments </p>
+<% end %>
+
+
+
 
 
 

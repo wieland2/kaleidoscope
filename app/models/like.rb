@@ -1,9 +1,9 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :comment
-  belongs_to :channel
-  belongs_to :post
-  belongs_to :reply
+  belongs_to :comment, optional: true
+  belongs_to :channel, optional: true
+  belongs_to :post, optional: true
+  belongs_to :reply, optional: true
   validates :user_id, uniqueness: {scope: :post_id}
   validates :user_id, uniqueness: {scope: :channel_id}
   validates :user_id, uniqueness: {scope: :comment_id}
